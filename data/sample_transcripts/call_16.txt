@@ -1,0 +1,4 @@
+Staff: BrightPipe HVAC, Sarah speaking.
+Customer: Wrong number. I was trying to reach the pizza place.
+Staff: No worries. Have a good day.
+Customer: Sorry about that.

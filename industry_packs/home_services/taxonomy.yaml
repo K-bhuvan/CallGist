@@ -1,0 +1,59 @@
+intents:
+  - new lead
+  - price question
+  - appointment scheduling
+  - rescheduling
+  - cancellation
+  - complaint
+  - refund request
+  - service status question
+  - emergency request
+  - follow-up request
+  - general question
+  - spam / irrelevant
+  - unknown
+
+outcomes:
+  - booked appointment
+  - quote requested
+  - lead lost
+  - follow-up needed
+  - complaint unresolved
+  - complaint resolved
+  - customer satisfied
+  - customer dissatisfied
+  - no clear outcome
+  - spam / irrelevant
+
+pain_point_labels:
+  - pricing unclear
+  - appointment availability too limited
+  - customer waited too long
+  - staff did not follow up
+  - customer confused about service coverage
+  - customer unhappy with technician
+  - customer asked for unavailable service
+  - customer did not understand warranty
+  - customer complained about hidden fees
+
+business_areas:
+  - pricing
+  - scheduling
+  - service quality
+  - communication
+  - operations
+  - sales
+  - support
+
+lead_quality_levels:
+  - high
+  - medium
+  - low
+  - not_applicable
+
+sentiments:
+  - positive
+  - neutral
+  - concerned
+  - frustrated
+  - angry

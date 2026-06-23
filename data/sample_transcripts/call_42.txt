@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Sarah here.
+Customer: Emergency. Water pouring from the attic unit.
+Staff: Shut off the system and the water supply valve if you can reach it safely.
+Customer: Done. Water still dripping.
+Staff: Emergency plumber partner or us - we handle HVAC drain pan issues. Tech in 60 minutes.
+Customer: Please hurry.
+Staff: Dispatched. Turn off ceiling fans near the leak.

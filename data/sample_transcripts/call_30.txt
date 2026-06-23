@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Sarah.
+Customer: Hi, is this BrightPipe? I have a question about my membership plan.
+Staff: Yes. What is your question?
+Customer: Does the plan include priority summer service?
+Staff: Members get same-day priority when slots exist, plus 15 percent off repairs.
+Customer: Sign me up. I am tired of waiting in heat waves.
+Staff: I will enroll you and email the terms. Effective immediately.

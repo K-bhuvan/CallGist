@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Sarah.
+Customer: Following up. Manager never called about my complaint from last week.
+Staff: I apologize. I see an open complaint ticket. Connecting you to the manager now.
+Customer: I have been waiting six days.
+Staff: Manager is available in two minutes or I schedule a guaranteed callback in 30.
+Customer: I will wait on hold.
+Staff: Transferring now.

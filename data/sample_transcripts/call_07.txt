@@ -1,0 +1,6 @@
+Staff: BrightPipe HVAC, Mike.
+Customer: Is my repair from Monday done? I have not heard anything.
+Staff: Let me check status... parts arrived, we can finish tomorrow morning.
+Customer: Okay, what time?
+Staff: Between 8 and 10 AM. I will text you when the tech is en route.
+Customer: Thanks, I just wanted an update.

@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Mike.
+Customer: AC runs but electric bill doubled. Something wrong?
+Staff: Could be dirty coils or refrigerant leak. We can do an efficiency check.
+Customer: What is the check cost?
+Staff: 99 dollars, credited toward repair if you proceed same visit.
+Customer: Schedule for next Monday.
+Staff: Monday 2 PM is open. Booked.

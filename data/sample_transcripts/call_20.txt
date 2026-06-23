@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Sarah.
+Customer: Your tech was rude and left tools in my garage.
+Staff: I am sorry to hear that. May I get your job number or address?
+Customer: 55 River Road. Job was Monday.
+Staff: I will escalate to the service manager and call you back today.
+Customer: I want this fixed, not another runaround.
+Staff: Understood. Manager callback is scheduled before 4 PM.

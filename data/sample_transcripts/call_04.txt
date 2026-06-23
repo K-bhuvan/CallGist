@@ -1,0 +1,8 @@
+Staff: BrightPipe HVAC, Sarah.
+Customer: Do you install tankless water heaters in Riverside?
+Staff: Yes, we do installs in that area. Would you like a quote visit?
+Customer: Yes, new construction. My builder said to call you.
+Staff: I can schedule an estimator for Friday at 2 PM.
+Customer: Please do. Also email me ballpark pricing if you can.
+Staff: I will have the estimator bring options and we will follow up with written pricing.
+Customer: Sounds good.

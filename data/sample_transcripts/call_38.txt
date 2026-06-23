@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Sarah.
+Customer: My mom is 82 and has no AC. Any senior discount?
+Staff: We offer 10 percent off repairs for seniors on weekdays.
+Customer: She needs a window unit installed Friday.
+Staff: Install starts at 149 plus unit cost. Friday 11 AM?
+Customer: Yes, use her address 90 Pine Street.
+Staff: Scheduled with senior discount flagged.

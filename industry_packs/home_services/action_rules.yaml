@@ -1,0 +1,34 @@
+﻿new_lead_intents:
+  - new lead
+  - emergency request
+
+complaint_intents:
+  - complaint
+  - refund request
+
+lead_lost:
+  primary_intents:
+    - new lead
+    - emergency request
+    - price question
+  outcomes:
+    - lead lost
+  tentative_outcomes:
+    - no clear outcome
+  tentative_require_follow_up_needed: false
+
+revenue_leak:
+  - rule: lost_lead_with_quality
+    lead_quality:
+      - high
+      - medium
+  - rule: unresolved_high_complaint
+    primary_intents:
+      - complaint
+      - refund request
+    outcomes:
+      - complaint unresolved
+    min_pain_severity: high
+
+follow_up:
+  follow_up_needed: true

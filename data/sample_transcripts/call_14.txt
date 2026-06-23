@@ -1,0 +1,6 @@
+Staff: BrightPipe HVAC, Sarah.
+Customer: I need to cancel Friday's duct cleaning. Travel came up.
+Staff: No problem. Want to hold a date two weeks out?
+Customer: Not yet. I will call when I know my schedule.
+Staff: I will note the cancellation. No fee since you gave 48 hours notice.
+Customer: Thanks.

@@ -1,0 +1,6 @@
+Staff: BrightPipe HVAC, Mike.
+Customer: I was quoted 3200 for a new AC last month. Any financing?
+Staff: Yes, 0 percent for 12 months on approved credit.
+Customer: Can you email the application link?
+Staff: Sending now. Promo rate ends this week.
+Customer: Got it. We will decide by Friday.

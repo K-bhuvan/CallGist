@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Sarah.
+Customer: Hi, I called yesterday about a quote for a new AC unit. Did anyone get my message?
+Staff: Let me check... I do not see a callback logged. Sorry about that.
+Customer: I needed numbers before my spouse gets home tonight.
+Staff: I can have a comfort advisor call you within the hour with a rough range.
+Customer: Please do. I am comparing three companies.
+Staff: Absolutely, we will call you back soon.

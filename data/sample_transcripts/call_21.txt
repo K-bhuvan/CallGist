@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Mike.
+Customer: Heat pump iced over outside. House is 61 degrees.
+Staff: That can be a defrost or refrigerant issue. We can send someone this afternoon.
+Customer: How much for after-hours if it runs past 5?
+Staff: After 5 PM the dispatch is 129 plus repair. Before 5 it is our normal 89 trip.
+Customer: Send someone now. I will pay whatever it takes.
+Staff: Tech en route between 1 and 3 PM.

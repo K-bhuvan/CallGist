@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Mike here.
+Customer: Do you sell HEPA filters for a Carrier 24ACC6?
+Staff: We stock compatible filters. 24 by 20 by 1, 39 dollars each or 99 for a 3-pack.
+Customer: I will stop by the shop tomorrow.
+Staff: I will set two aside under your name. What is your last name?
+Customer: Ortiz.
+Staff: Got it. See you tomorrow.

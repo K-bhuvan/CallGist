@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Mike speaking.
+Customer: Hi, I need to move my duct cleaning from Wednesday to Friday afternoon.
+Staff: Let me pull up your appointment... I have Friday at 3 PM or 4:30 PM.
+Customer: 3 PM works better. Same crew?
+Staff: Yes, same team. I updated the schedule and you will get a new confirmation text.
+Customer: Great, thanks for making that easy.
+Staff: Anytime. See you Friday.

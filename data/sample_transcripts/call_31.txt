@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Mike.
+Customer: No heat. Pilot light keeps going out on the old furnace.
+Staff: For safety we recommend a combustion check. Slot tomorrow 8 AM?
+Customer: Can you do today?
+Staff: A cancellation opened at 5 PM today.
+Customer: Take it.
+Staff: Booked. Please keep area around furnace clear.

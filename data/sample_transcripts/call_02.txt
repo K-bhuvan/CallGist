@@ -1,0 +1,6 @@
+Staff: BrightPipe HVAC, Sarah speaking.
+Customer: I want to schedule annual maintenance for my furnace before winter.
+Staff: Great, I have openings next Tuesday or Thursday morning.
+Customer: Tuesday at 9 works.
+Staff: Booked. You will get a confirmation text.
+Customer: Perfect, thank you.

@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Mike speaking.
+Customer: I need a second opinion. Another company said I need a full system replace.
+Staff: We offer free second-opinion visits on equipment over 8 years old.
+Customer: Mine is 9 years old. When can you come?
+Staff: Friday at 4 PM.
+Customer: Schedule it please.
+Staff: On the calendar. Bring the other company's quote if you have it.

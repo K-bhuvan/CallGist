@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Sarah.
+Customer: My tenant says AC leaked water into the ceiling. Landlord here.
+Staff: We can inspect today. Is the unit still running?
+Customer: They turned it off. Access after 4 PM.
+Staff: 4 to 6 PM works. Landlord authorization on file?
+Customer: Yes, account 4421. Bill me directly.
+Staff: Booked. We will document photos for insurance.

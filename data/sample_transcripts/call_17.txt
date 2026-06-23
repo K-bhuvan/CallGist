@@ -1,0 +1,6 @@
+Staff: BrightPipe HVAC, Mike.
+Customer: I called yesterday about a quote and nobody emailed me the estimate.
+Staff: I am sorry. I see the note. I will have the estimator resend it within the hour.
+Customer: I need numbers before my contractor meeting tonight.
+Staff: I will mark it urgent and call you when it is sent.
+Customer: Thank you.

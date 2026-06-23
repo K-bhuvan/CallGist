@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Sarah.
+Customer: There is a burning smell from the vents when heat runs.
+Staff: Please turn the system off at the thermostat for safety.
+Customer: Already did. Can someone come today?
+Staff: We have a 3 to 5 PM window. Emergency fee applies after hours only, so standard trip is 89 dollars.
+Customer: Book me for 3 PM.
+Staff: Technician assigned. They will call 30 minutes out.

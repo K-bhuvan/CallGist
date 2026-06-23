@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Mike.
+Customer: Indoor humidity is 70 percent. Do you install whole-home dehumidifiers?
+Staff: Yes, tied into ductwork. Ballpark 2400 to 3200 installed.
+Customer: Can I get a written quote for my HOA?
+Staff: Estimator visit Wednesday 1 PM?
+Customer: Yes.
+Staff: Scheduled. HOA packet included after visit.

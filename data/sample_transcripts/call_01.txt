@@ -1,0 +1,8 @@
+Staff: Thanks for calling BrightPipe HVAC, this is Mike. How can I help?
+Customer: Hi, our AC stopped working and it is 95 degrees. I need someone today.
+Staff: I understand. We can send a technician between 4 and 6 PM. Emergency visits have a dispatch fee.
+Customer: How much is the fee? Nobody told me that last time.
+Staff: It is 129 dollars for after-hours emergency dispatch plus parts and labor.
+Customer: That is a lot. I will call around and get back to you.
+Staff: Sure, let us know if you want to book.
+Customer: Okay thanks.

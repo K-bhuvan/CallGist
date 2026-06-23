@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Mike.
+Customer: Mini-split in the addition not cooling. Error code E1 on the remote.
+Staff: E1 often means communication fault. We service that brand.
+Customer: Warranty expired last month. Rough cost?
+Staff: Diagnostic 89, repairs vary. Thursday afternoon?
+Customer: Book Thursday.
+Staff: Done. Please leave the remote where tech can see the code.

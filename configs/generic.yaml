@@ -1,0 +1,6 @@
+confidence_threshold: 0.7
+llm_model: gpt-4o-mini
+max_recommended_actions: 3
+min_transcript_chars: 50
+max_staff_coaching_notes: 5
+max_top_intents: 5

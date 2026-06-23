@@ -1,0 +1,6 @@
+Staff: BrightPipe HVAC, Mike.
+Customer: Are you hiring technicians? I saw a sign on your van.
+Staff: We are always taking applications. I can transfer you to the office line.
+Customer: Actually just curious. My nephew might apply.
+Staff: Tell him to apply at brightpipehvac.com careers. No phone interview today.
+Customer: Okay thanks.

@@ -1,0 +1,7 @@
+Staff: Thanks for calling BrightPipe HVAC, Mike.
+Customer: I got your postcard. Is the 49 dollar drain cleaning still valid?
+Staff: That promo is for main line only, not kitchen stack clogs.
+Customer: Mine is the kitchen sink backing up.
+Staff: For that we usually quote 179 to 219 depending on access.
+Customer: That is way more than 49. I will pass.
+Staff: Understood. Call us if you change your mind.

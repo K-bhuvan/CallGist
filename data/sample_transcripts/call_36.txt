@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Sarah speaking.
+Customer: I need to confirm tomorrow's appointment. 9 AM furnace filter swap?
+Staff: I show annual maintenance at 9 AM, not just a filter.
+Customer: Oh right, full tune-up. Still good?
+Staff: Yes, tech James. Any gate code?
+Customer: 4455. See you tomorrow.
+Staff: Noted. Thanks.

@@ -1,0 +1,5 @@
+Staff: BrightPipe HVAC, Sarah here.
+Customer: Robocall about my car warranty. Why are you calling me?
+Staff: This is BrightPipe HVAC, not an auto warranty company.
+Customer: Oh wrong listing. Sorry.
+Staff: No problem.

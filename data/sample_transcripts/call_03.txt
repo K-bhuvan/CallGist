@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Mike here.
+Customer: I am really upset. Your technician tracked mud through my house last week.
+Staff: I am sorry that happened. Can I get your address to pull up the job?
+Customer: 42 Oak Lane. Nobody called me back like you promised.
+Staff: I see the note. I will have the manager call you today about cleaning and a credit.
+Customer: This is frustrating. I might leave a bad review.
+Staff: I understand. We want to make this right.

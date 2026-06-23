@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Sarah here.
+Customer: Thermostat blank. Breaker tripped twice.
+Staff: Could be a short. Do not reset again until we check it.
+Customer: Kids are cold. Earliest visit?
+Staff: Tomorrow 7 to 9 AM emergency slot.
+Customer: Book it.
+Staff: You are in the queue. Safety first until the tech arrives.

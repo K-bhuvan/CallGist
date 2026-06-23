@@ -1,0 +1,8 @@
+Staff: BrightPipe HVAC, Sarah.
+Customer: I smell gas near the furnace in the basement. I shut off the valve but I am scared.
+Staff: Please leave the house if the smell is strong and call 911 if you feel unsafe. We treat gas calls as emergency.
+Customer: It is faint but I want someone tonight.
+Staff: I can have a certified tech there within 90 minutes. There is an emergency dispatch fee I will explain on arrival.
+Customer: Please send someone. I will wait outside with my kids.
+Staff: Tech Marcus is dispatched. He will call when he is 15 minutes out.
+Customer: Thank you so much.

@@ -1,0 +1,14 @@
+﻿.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+outputs/analyses/
+outputs/*.md
+!outputs/.gitkeep
+data/audio/
+*.egg-info/
+.pytest_cache/
+.DS_Store

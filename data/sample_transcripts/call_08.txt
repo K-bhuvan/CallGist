@@ -1,0 +1,9 @@
+Staff: BrightPipe HVAC, Sarah.
+Customer: How much do you charge to unclog a drain? It is backing up into the sink.
+Staff: Standard drain clearing starts at 189 during business hours.
+Customer: Is that the total or are there extra fees?
+Staff: That covers the first hour. If we need a camera or main line work, we quote on site.
+Customer: I saw an ad for 49 dollars drain special.
+Staff: That promo is for simple bathroom sinks with easy access, not main backups.
+Customer: This feels misleading. I will think about it.
+Staff: Happy to explain more if you call back.

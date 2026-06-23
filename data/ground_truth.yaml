@@ -1,0 +1,44 @@
+﻿# Human labels for Milestone 1 validation (BrightPipe HVAC sample week).
+# Used by scripts/ground_truth_review.py — not fed to the LLM.
+
+calls:
+  call_01:
+    primary_intent: emergency request
+    outcome: lead lost
+    notes: Customer shops around after dispatch fee quote.
+  call_02:
+    primary_intent: appointment scheduling
+    outcome: booked appointment
+    notes: Annual furnace maintenance booked Tuesday 9 AM.
+  call_03:
+    primary_intent: complaint
+    outcome: complaint unresolved
+    notes: Mud tracking and missed callback; manager follow-up promised.
+  call_04:
+    primary_intent: new lead
+    outcome: booked appointment
+    notes: Tankless install quote visit scheduled; email pricing requested.
+  call_05:
+    primary_intent: cancellation
+    outcome: follow-up needed
+    notes: Appointment canceled; customer will call back to reschedule.
+  call_06:
+    primary_intent: follow-up request
+    outcome: follow-up needed
+    notes: Missed callback on AC quote; urgent callback promised.
+  call_07:
+    primary_intent: service status question
+    outcome: customer satisfied
+    notes: Repair status update; finish window confirmed.
+  call_08:
+    primary_intent: price question
+    outcome: lead lost
+    notes: Drain pricing and promo confusion; customer declines to book.
+  call_09:
+    primary_intent: rescheduling
+    outcome: booked appointment
+    notes: Duct cleaning moved from Wednesday to Friday 3 PM.
+  call_10:
+    primary_intent: emergency request
+    outcome: booked appointment
+    notes: Gas smell emergency; tech dispatched within 90 minutes.

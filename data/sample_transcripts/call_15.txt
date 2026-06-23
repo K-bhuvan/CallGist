@@ -1,0 +1,8 @@
+Staff: BrightPipe HVAC, Mike.
+Customer: Is my warranty still good on the compressor you installed last year?
+Staff: Let me pull your account. What is the service address?
+Customer: 118 Maple Court.
+Staff: Yes, parts are covered 10 years, labor 2 years. You are still in labor coverage.
+Customer: Great. The unit is noisy but still cooling.
+Staff: I can schedule a warranty diagnostic Tuesday at 1 PM.
+Customer: Please do.

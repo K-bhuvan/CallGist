@@ -1,0 +1,8 @@
+Staff: BrightPipe HVAC, Mike.
+Customer: Following up on invoice 8892. I was double charged.
+Staff: Let me check billing. One moment.
+Customer: I see two 189 charges on my card.
+Staff: You are right. I will reverse one today and email a corrected receipt.
+Customer: How long for the refund?
+Staff: Three to five business days on the card.
+Customer: Okay, thank you for fixing it.

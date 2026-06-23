@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Sarah.
+Customer: Your driver cut me off on Route 9. Unprofessional.
+Staff: I am sorry you had that experience. I will pass this to operations.
+Customer: I will not use your company if that is how you drive.
+Staff: I understand. If you want a formal follow-up, I can have a manager call.
+Customer: No, just telling you. Goodbye.
+Staff: Thank you for letting us know.

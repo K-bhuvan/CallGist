@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Mike speaking.
+Customer: My upstairs AC is blowing warm air and the thermostat says 82.
+Staff: We can fit you in tomorrow morning between 8 and 10.
+Customer: I have guests tonight. Is there anything sooner?
+Staff: Next same-day slot is 6 PM with a 99 dollar priority fee.
+Customer: Book the 6 PM please.
+Staff: You are on the schedule. Confirmation text is on the way.

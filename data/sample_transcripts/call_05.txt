@@ -1,0 +1,5 @@
+Staff: BrightPipe HVAC, Mike.
+Customer: I need to cancel my appointment tomorrow. We are traveling.
+Staff: No problem, I canceled it. Want to reschedule when you are back?
+Customer: I will call later, not sure of dates yet.
+Staff: Okay, we are here when you are ready.

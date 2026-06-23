@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Sarah here.
+Customer: I need a furnace tune-up before fall. What do you charge?
+Staff: Standard tune-up is 149 dollars including filter check.
+Customer: Do you have Saturday openings?
+Staff: This Saturday at 11 AM is open.
+Customer: Perfect, book it under Lisa Chen.
+Staff: Done. We will remind you Thursday.

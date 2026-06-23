@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Mike.
+Customer: Do you pull permits for furnace replacement?
+Staff: Yes, permit and inspection included in our install quotes.
+Customer: Good. I am comparing three bids.
+Staff: Want a itemized bid email for apples-to-apples?
+Customer: Yes, 2200 square foot ranch, 15-year-old furnace.
+Staff: Estimator will call tonight to confirm details before sending.

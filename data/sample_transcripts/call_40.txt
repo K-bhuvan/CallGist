@@ -1,0 +1,6 @@
+Staff: BrightPipe HVAC, Sarah.
+Customer: Cancel my membership. I am moving out of state.
+Staff: Sorry to see you go. Effective end of month?
+Customer: Yes, June 30.
+Staff: Cancelled. No further charges after the 30th.
+Customer: Thanks for making it easy.

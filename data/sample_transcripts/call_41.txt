@@ -1,0 +1,7 @@
+Staff: BrightPipe HVAC, Mike.
+Customer: Power went out. Will my smart thermostat reset schedules?
+Staff: Usually yes after Wi-Fi reconnects. We can walk you through it.
+Customer: It is working now but schedules are gone.
+Staff: I can email reset steps, or a tech can help for 89 trip.
+Customer: Email is fine.
+Staff: Sending guide now. Call back if it does not stick.
