@@ -102,9 +102,11 @@ Sample validation: [`docs/validation_results.md`](docs/validation_results.md) �
 pip install -r requirements.txt
 cp .env.example .env          # OPENAI_API_KEY
 
-python scripts/run_analysis.py
+python scripts/run_analysis.py --workers 4
 python scripts/generate_sample_report.py
 ```
+
+For large batches, use `--skip-existing` to resume after interruptions (skips calls that already have JSON in `outputs/analyses/`). Tune `--workers` to your OpenAI rate limit tier (default: 4 from `configs/generic.yaml`).
 
 | Output | Path |
 |--------|------|
@@ -169,7 +171,7 @@ Sample transcripts and demo reports are **fictional**. If you use CallGist on re
                      │
          ┌───────────┼───────────┐
          ▼           ▼           ▼
-    core/ingest  core/clean  core/analysis ──► OpenAI API
+    core/ingest  core/clean  core/analysis ──► OpenAI API (parallel)
          │           │           │              (per-call JSON)
          └───────────┴───────────┘
                      │
@@ -252,6 +254,6 @@ flowchart LR
 | `prompts/` | LLM system prompts |
 | `data/ground_truth.yaml` | Validation labels |
 
-**Scripts:** `run_analysis.py` · `generate_sample_report.py` · `ground_truth_review.py` · `delete_call.py`
+**Scripts:** `run_analysis.py` (`--workers`, `--skip-existing`, `--force`) · `generate_sample_report.py` · `ground_truth_review.py` · `delete_call.py`
 
 </details>

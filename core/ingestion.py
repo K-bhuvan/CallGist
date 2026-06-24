@@ -5,6 +5,7 @@ import json
 from datetime import date
 from pathlib import Path
 
+from core.config import project_root
 from core.models import CallRecord
 
 
@@ -14,6 +15,13 @@ def _parse_date(value: object | None) -> date | None:
     if isinstance(value, date):
         return value
     return date.fromisoformat(str(value)[:10])
+
+
+def _relative_source_path(path: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(project_root().resolve()))
+    except ValueError:
+        return str(path)
 
 
 def load_transcripts(directory: Path) -> list[CallRecord]:
@@ -38,7 +46,12 @@ def load_transcripts(directory: Path) -> list[CallRecord]:
                 call_date=call_date,
                 direction=direction,
                 staff_name=staff_name,
-                source_path=str(txt_path),
+                source_path=_relative_source_path(txt_path),
             )
         )
     return records
+
+
+def load_analysis_pair(path: Path) -> tuple[dict, dict]:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return data["call"], data["analysis"]

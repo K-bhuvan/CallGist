@@ -4,3 +4,11 @@ max_recommended_actions: 3
 min_transcript_chars: 50
 max_staff_coaching_notes: 5
 max_top_intents: 5
+
+# Parallel analysis (I/O-bound LLM calls)
+analysis_workers: 4
+llm_max_retries: 3
+llm_retry_base_delay_seconds: 1.0
+
+# Parallel JSON load for large analysis directories
+report_load_workers: 8
