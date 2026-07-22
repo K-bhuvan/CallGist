@@ -5,7 +5,7 @@ import json
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from core.config import AppConfig, load_config
+from core.config import AppConfig, load_config, get_llm_model
 from core.llm import chat_json
 from core.models import WeeklyAggregation
 
@@ -23,7 +23,7 @@ def _intent_reason(intent: str) -> str:
 
 def _llm_sections(config: AppConfig, facts: dict) -> dict:
     prompt = (config.prompts_dir / "weekly_report.md").read_text(encoding="utf-8")
-    model = str(config.generic.get("llm_model", "gpt-4o-mini"))
+    model = get_llm_model(config)
     max_actions = int(config.generic.get("max_recommended_actions", 3))
     user = json.dumps({"facts": facts, "max_actions": max_actions}, indent=2)
     return chat_json(
@@ -32,7 +32,7 @@ def _llm_sections(config: AppConfig, facts: dict) -> dict:
             {"role": "user", "content": user},
         ],
         model=model,
-    )
+    ).content
 
 
 def generate_report(

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import argparse
-import logging
 import sys
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -16,13 +15,10 @@ from core.config import load_config
 from core.ingestion import load_analysis_pair
 from core.models import CallAnalysis, CallRecord
 from core.reporting import generate_report
+from core.logging import configure_logging, get_logger
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s %(message)s",
-    datefmt="%H:%M:%S",
-)
-logger = logging.getLogger(__name__)
+configure_logging()
+logger = get_logger(__name__)
 
 
 def load_pairs(
@@ -68,6 +64,11 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Parallel JSON loaders (default: configs/generic.yaml report_load_workers)",
     )
+    parser.add_argument(
+        "--use-db",
+        action="store_true",
+        help="Persist report to SQLite database",
+    )
     return parser.parse_args()
 
 
@@ -90,6 +91,14 @@ def main() -> None:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(report_md, encoding="utf-8")
     logger.info("Wrote %s", args.out)
+
+    if args.use_db:
+        try:
+            from core.db_crud import save_weekly_report
+            save_weekly_report(aggregation, report_md)
+            logger.info("Persisted report to DB")
+        except Exception:
+            logger.warning("Failed to persist report to DB", exc_info=True)
 
 
 if __name__ == "__main__":

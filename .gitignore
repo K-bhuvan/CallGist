@@ -1,14 +1,35 @@
-﻿.env
+﻿# Secrets
+.env
 .env.*
 !.env.example
+
+# Python
 __pycache__/
 *.py[cod]
 .venv/
 venv/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Data & outputs (may contain customer PII)
 outputs/analyses/
 outputs/*.md
 !outputs/.gitkeep
 data/audio/
-*.egg-info/
+data/db/
+
+# Testing
 .pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# OS
 .DS_Store
+
+# Tools
+.context/

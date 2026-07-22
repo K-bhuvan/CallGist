@@ -1,6 +1,7 @@
 ﻿"""Load YAML configuration from project root."""
 from __future__ import annotations
 
+import os
 from pathlib import Path
 from typing import Any
 
@@ -34,3 +35,7 @@ class AppConfig:
 
 def load_config(industry_config_name: str = "home_services") -> AppConfig:
     return AppConfig(industry_config_name=industry_config_name)
+
+
+def get_llm_model(config: AppConfig) -> str:
+    return os.getenv("LLM_MODEL") or str(config.generic.get("llm_model", "gpt-4o-mini"))

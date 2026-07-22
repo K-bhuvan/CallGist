@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import json
-import logging
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from pathlib import Path
@@ -11,8 +10,10 @@ from core.analysis import analyze_call, build_analysis_system_prompt, low_qualit
 from core.cleaning import apply_cleaning
 from core.config import AppConfig
 from core.models import CallRecord
+from core.logging import get_logger
+from core.pii_redaction import redact, should_redact
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 @dataclass
@@ -34,6 +35,16 @@ def _write_payload(out_path: Path, record: CallRecord, analysis) -> None:
     tmp_path.replace(out_path)
 
 
+def _persist_to_db(record: CallRecord, analysis, cost_info: dict | None = None) -> None:
+    try:
+        from core.db_crud import upsert_call_record, upsert_call_analysis
+
+        upsert_call_record(record)
+        upsert_call_analysis(record.call_id, analysis, cost_info=cost_info)
+    except Exception:
+        logger.warning("Failed to persist to DB, continuing", exc_info=True)
+
+
 def analyze_one(
     record: CallRecord,
     *,
@@ -44,6 +55,7 @@ def analyze_one(
     skip_existing: bool,
     max_retries: int,
     retry_base_delay: float,
+    use_db: bool = False,
 ) -> AnalysisResult:
     out_path = out_dir / f"{record.call_id}.json"
     if skip_existing and out_path.exists():
@@ -58,8 +70,14 @@ def analyze_one(
     try:
         if record.low_quality:
             analysis = low_quality_analysis()
+            cost_info = {}
         else:
-            analysis = analyze_call(
+            safe_text = record.transcript_text
+            if should_redact(safe_text):
+                safe_text, pii_counts = redact(safe_text)
+                logger.info("Redacted PII from %s: %s", record.call_id, pii_counts)
+                record = record.model_copy(update={"transcript_text": safe_text})
+            analysis, cost_info = analyze_call(
                 record,
                 config=config,
                 system_prompt=system_prompt,
@@ -67,6 +85,8 @@ def analyze_one(
                 retry_base_delay=retry_base_delay,
             )
         _write_payload(out_path, record, analysis)
+        if use_db:
+            _persist_to_db(record, analysis, cost_info=cost_info)
         return AnalysisResult(
             call_id=record.call_id,
             ok=True,
@@ -94,6 +114,7 @@ def run_parallel_analysis(
     min_chars: int,
     max_retries: int,
     retry_base_delay: float,
+    use_db: bool = False,
 ) -> list[AnalysisResult]:
     if not records:
         return []
@@ -117,6 +138,7 @@ def run_parallel_analysis(
                 skip_existing=skip_existing,
                 max_retries=max_retries,
                 retry_base_delay=retry_base_delay,
+                use_db=use_db,
             ): record.call_id
             for record in records
         }
