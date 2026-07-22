@@ -4,121 +4,110 @@
   <img src="public/logo.svg" alt="CallGist" width="96" height="96">
 </p>
 
-**Weekly call intelligence for home-service owners — delivered to their inbox.**
+<p align="center"><strong>Weekly call intelligence for home-service owners — delivered to their inbox.</strong></p>
 
 Every Monday, the owner gets one short email: what customers called about, what went wrong, which leads slipped, and **three things to fix this week**. Readable on a phone in under five minutes.
 
 ---
 
-## Example: HVAC owner on Monday morning
+## How it works
 
-**BrightPipe HVAC** · Week of Jun 16–20 · from [`outputs/sample_report.md`](outputs/sample_report.md)
+1. **Ingest** — phone call transcripts (`.txt` files with optional `.meta.json`)
+2. **Analyze** — each call classified by LLM (intent, outcome, pain points, lead quality, sentiment)
+3. **Aggregate** — deterministic rules count new leads, lost leads, follow-ups, complaints, revenue leaks
+4. **Report** — markdown report with executive summary, top issues, and 3 recommended actions
+5. **Deliver** — emails the report automatically via SendGrid
 
-### The email on their phone
+### Try it
 
-**1. Inbox** — subject + preview (what convinces them to open it)
-
-```
-┌──────────────────────────────────────────────┐
-│  ← Inbox                              CallGist │
-├──────────────────────────────────────────────┤
-│  CallGist                          7:42 AM  │
-│  BrightPipe HVAC — Weekly CallGist (Jun 16–20)│
-│  Hi Mike — 45 calls. 3 things for this week: │
-│  ↳ Unresolved complaints — escalate today.   │
-│  ↳ Pricing clarity — train team on promos.   │
-│  ↳ Follow-up gaps — 15 callbacks owed.       │
-└──────────────────────────────────────────────┘
+```bash
+pip install -e ".[dev]"
+cp .env.example .env          # configure your LLM provider + email
+python scripts/run_pipeline.py
 ```
 
-**2. Opened** — full message (under 5 min read)
+**LLM providers:** OpenAI or OpenRouter (any OpenAI-compatible API works). Set `LLM_PROVIDER` in `.env`.
 
-```
-From: CallGist <reports@callgist.app>
-To: Mike Torres <mike@brightpipehvac.com>
-Subject: BrightPipe HVAC — Weekly CallGist (Jun 16–20)
+**Email:** reports sent via SendGrid. Set `SENDGRID_API_KEY` and `REPORT_TO_EMAIL`.
 
-Hi Mike,
-
-45 calls this week. Here are the 3 things worth your time:
-
-────────────────────────────────────────
-1. ESCALATE — unresolved complaints (3 open)
-   Mud tracking (call_03), rude tech (call_20), missed manager callback (call_39).
-   Bad review risk if not fixed this week.
-────────────────────────────────────────
-2. TRAIN ON PRICING — promo vs. real quote
-   Drain promo confusion (call_08, call_13) still showing up.
-   Customers hear $49 promo but get quoted $189+ on kitchen/stack jobs.
-────────────────────────────────────────
-3. CLOSE THE LOOP — follow-up protocol
-   15 follow-ups flagged (overlapping with leads & complaints).
-   Promised estimates, callbacks, and complaint resolutions need owners.
-────────────────────────────────────────
-
-AT A GLANCE — 45 calls total
-  Outcomes (each call counted once — sums to 45):
-    23 booked appointment · 4 follow-up needed · 4 lead lost
-    3 complaint unresolved · 3 customer satisfied · 3 no clear outcome
-    2 quote requested · 2 spam / irrelevant · 1 complaint resolved
-  Action flags (can overlap — not a partition):
-    15 follow-ups owed · 2 likely lost leads · 4 complaints · 11 new leads
-  Top repeat issue: pricing unclear
-
-ALSO CALL BACK: call_01 (lost AC lead at dispatch fee), call_06 (missed quote callback)
-
-— CallGist · Reply if something looks wrong
-```
-
-The inbox preview and the opened email tell the same story — preview hooks them; the email gives them enough to act.
-
-Full report: [`outputs/sample_report.md`](outputs/sample_report.md)
+| Command | What it does |
+|---------|-------------|
+| `callgist-pipeline` | Full run: ingest → analyze → aggregate → report → email |
+| `callgist-analyze` | Analyze transcripts only (parallel, `--workers N`) |
+| `callgist-report` | Generate weekly report from existing analyses |
+| `callgist-validate` | Compare LLM predictions against ground truth labels |
 
 ---
 
-## The problem
+## Example output
 
-Home-service owners run on phone calls but cannot listen to every one:
+**Subject:** *BrightPipe HVAC — Weekly CallGist (Jun 16–20)*
 
-- Emergency leads lost over unclear dispatch fees
-- The same complaint showing up all week before anyone connects the dots
-- Promised callbacks that never happen
-
-CallGist turns a week of calls into **action** — not transcripts, not noise.
+> 45 calls this week. Here are the 3 things worth your time:
+>
+> 1. **Escalate unresolved complaints (3 open)** — mud tracking, rude tech, missed callbacks. Bad review risk.
+> 2. **Train team on pricing** — drain promo confusion still showing up. Customers hear $49, get quoted $189.
+> 3. **Close follow-up gaps** — 15 callbacks owed. Promised estimates need owners.
+>
+> | Outcome | Calls |
+> |---|---:|
+> | booked appointment | 24 |
+> | lead lost | 4 |
+> | complaint unresolved | 3 |
+>
+> See [`outputs/sample_report.md`](outputs/sample_report.md)
 
 ---
 
 ## Why owners trust it
 
-Wrong “lost lead” claims kill the product. CallGist backs every headline with evidence:
+Wrong "lost lead" claims kill the product. CallGist backs every headline with evidence:
 
-- Per-call analysis with customer quotes
-- Lost leads and follow-ups counted by rules, not guessed by the LLM
-- Uncertain calls flagged separately
+- **Rules, not guesses** — lost leads and follow-ups are counted by deterministic rules, not the LLM
+- **Evidence quotes** — every pain point tagged with what the customer actually said
+- **Needs review** — low-confidence calls flagged separately so you verify before acting
 
-Sample validation: [`docs/validation_results.md`](docs/validation_results.md) — 100% intent / 80% outcome on 10 test calls.
+Validation: [`docs/validation_results.md`](docs/validation_results.md) — 100% intent / 80% outcome on 10 test calls.
 
 ---
 
-## Try it
+## Features
 
-```bash
-pip install -r requirements.txt
-cp .env.example .env          # OPENAI_API_KEY
+- **PII redaction** — phone numbers, emails, SSNs, cards, and addresses stripped before hitting the LLM
+- **Cost tracking** — token usage and cost per call saved to database
+- **Structured logging** — JSON or console output, configurable via `LOG_FORMAT`
+- **Resumable** — `--skip-existing` picks up where you left off
+- **Database optional** — file-based by default, `--use-db` persists to SQLite
+- **CI/CD** — GitHub Actions runs tests on Python 3.9–3.12
 
-python scripts/run_analysis.py --workers 4
-python scripts/generate_sample_report.py
+---
+
+## Project structure
+
 ```
-
-For large batches, use `--skip-existing` to resume after interruptions (skips calls that already have JSON in `outputs/analyses/`). Tune `--workers` to your OpenAI rate limit tier (default: 4 from `configs/generic.yaml`).
-
-| Output | Path |
-|--------|------|
-| Weekly report | [`outputs/sample_report.md`](outputs/sample_report.md) |
-| Per-call detail | [`outputs/analyses/`](outputs/analyses/) |
-| Sample calls | [`data/sample_transcripts/`](data/sample_transcripts/) |
-
-Showing the report to a pilot owner: [`docs/owner_pilot_guide.md`](docs/owner_pilot_guide.md)
+columbus/
+├── core/                  # Pipeline engine
+│   ├── ingestion.py       # Load transcripts + metadata
+│   ├── cleaning.py        # Normalize text, flag poor quality
+│   ├── analysis.py        # Single-call LLM classification
+│   ├── batch.py           # Parallel analysis with ThreadPoolExecutor
+│   ├── aggregation.py     # Weekly rollup + deterministic rules
+│   ├── reporting.py       # Jinja2 template + LLM-generated summary
+│   ├── llm.py             # OpenAI/OpenRouter client with retries + cost tracking
+│   ├── rules.py           # Action rules (lost lead, complaint, revenue leak)
+│   ├── models.py          # Pydantic data models
+│   ├── db.py / db_models.py / db_crud.py  # SQLAlchemy persistence
+│   ├── emailer.py         # SendGrid email delivery
+│   ├── pii_redaction.py   # Phone/email/SSN/card/address scrubbing
+│   └── logging.py         # Structlog configuration
+├── configs/               # YAML: model, thresholds, workers, industry
+├── industry_packs/        # Pluggable vertical configs
+│   └── home_services/     # Taxonomy, action rules, report template
+├── prompts/               # LLM system prompts
+├── scripts/               # CLI entry points
+├── tests/                 # 51 unit tests (pure logic, no API key needed)
+└── data/                  # Sample transcripts + ground truth labels
+```
 
 ---
 
@@ -126,9 +115,9 @@ Showing the report to a pilot owner: [`docs/owner_pilot_guide.md`](docs/owner_pi
 
 | Stage | Owner experience |
 |-------|------------------|
-| **Now** | Weekly report generated; email it to the owner |
-| **Next** | Mobile-friendly HTML email, sent automatically each week |
-| **Then** | Paid pilots — track opens and whether owners act on the 3 items |
+| **Now** | Weekly markdown report, email delivery, automated pipeline |
+| **Next** | Mobile-friendly HTML email, real phone system integration |
+| **Then** | Paid pilots — track opens, actions taken, revenue impact |
 
 [`plan.md`](plan.md) · [`docs/data_handling.md`](docs/data_handling.md) · [`docs/DISCLAIMER.md`](docs/DISCLAIMER.md)
 
@@ -138,126 +127,4 @@ Showing the report to a pilot owner: [`docs/owner_pilot_guide.md`](docs/owner_pi
 
 Licensed under the [MIT License](LICENSE).
 
-Sample transcripts and demo reports are **fictional**. If you use CallGist on real calls, you are responsible for recording consent, privacy, and third-party API terms (e.g. OpenAI). AI-generated reports may be wrong — verify before acting. Full details: [`docs/DISCLAIMER.md`](docs/DISCLAIMER.md). Security: [`SECURITY.md`](SECURITY.md).
-
----
-
-<details>
-<summary>For developers</summary>
-
-### Architecture
-
-```text
-                    ┌─────────────────────────────────────────┐
-                    │         Generic Engine (core/)          │
-                    │  ingest → clean → analyze → aggregate   │
-                    │              → report                   │
-                    └──────────────────┬──────────────────────┘
-                                       │
-                    ┌──────────────────▼──────────────────────┐
-                    │   Home Services Pack (industry_packs/)  │
-                    │  taxonomy · action_rules · email/report │
-                    │              templates                  │
-                    └─────────────────────────────────────────┘
-```
-
-### Pipeline flow (Milestone 1)
-
-```text
-  INPUT                         PROCESS                         OUTPUT
-  ─────                         ───────                         ──────
-
-  data/sample_transcripts/
-    *.txt  ──────────┐
-    *.meta.json      │
-                     ▼
-              scripts/run_analysis.py
-                     │
-         ┌───────────┼───────────┐
-         ▼           ▼           ▼
-    core/ingest  core/clean  core/analysis ──► OpenAI API (parallel)
-         │           │           │              (per-call JSON)
-         └───────────┴───────────┘
-                     │
-                     ▼
-           outputs/analyses/<call_id>.json
-
-  outputs/analyses/*.json
-                     │
-                     ▼
-        scripts/generate_sample_report.py
-                     │
-         ┌───────────┴───────────┐
-         ▼                       ▼
-  core/aggregation          core/reporting ──► OpenAI API
-  + action_rules.yaml       + Jinja template     (summary + 3 actions)
-         │                       │
-         └───────────┬───────────┘
-                     ▼
-           outputs/sample_report.md
-                     │
-                     ▼ (Milestone 2)
-              owner email / phone
-```
-
-```mermaid
-flowchart LR
-  subgraph input [Input]
-    T[transcripts .txt]
-    M[metadata .meta.json]
-  end
-
-  subgraph m1 [Milestone 1]
-    A[run_analysis.py]
-    J[analyses JSON]
-    R[generate_sample_report.py]
-    MD[sample_report.md]
-  end
-
-  subgraph engine [core]
-    I[ingestion]
-    C[cleaning]
-    AN[analysis]
-    AG[aggregation]
-    RP[reporting]
-  end
-
-  subgraph pack [home_services pack]
-    TX[taxonomy.yaml]
-    AR[action_rules.yaml]
-    TM[report_template.md]
-  end
-
-  subgraph m2 [Milestone 2]
-    EM[HTML email]
-  end
-
-  T --> I
-  M --> I
-  I --> C --> AN
-  TX --> AN
-  AN --> J
-  J --> AG
-  AR --> AG
-  AG --> RP
-  TM --> RP
-  AN -.->|LLM| AN
-  RP -.->|LLM| RP
-  A --> AN
-  R --> AG
-  R --> RP
-  J --> R
-  MD --> EM
-```
-
-| Path | Role |
-|------|------|
-| `core/` | Engine modules |
-| `configs/` | Model, thresholds, caps |
-| `industry_packs/home_services/` | Taxonomy, rules, templates |
-| `prompts/` | LLM system prompts |
-| `data/ground_truth.yaml` | Validation labels |
-
-**Scripts:** `run_analysis.py` (`--workers`, `--skip-existing`, `--force`) · `generate_sample_report.py` · `ground_truth_review.py` · `delete_call.py`
-
-</details>
+Sample transcripts and demo reports are **fictional**. If you use CallGist on real calls, you are responsible for recording consent, privacy, and third-party API terms. AI-generated reports may be wrong — verify before acting. Full details: [`docs/DISCLAIMER.md`](docs/DISCLAIMER.md). Security: [`SECURITY.md`](SECURITY.md).
