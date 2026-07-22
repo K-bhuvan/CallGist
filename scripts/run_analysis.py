@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import argparse
-import logging
 import sys
 from pathlib import Path
 
@@ -13,13 +12,10 @@ sys.path.insert(0, str(ROOT))
 from core.batch import run_parallel_analysis
 from core.config import load_config
 from core.ingestion import load_transcripts
+from core.logging import configure_logging, get_logger
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s %(message)s",
-    datefmt="%H:%M:%S",
-)
-logger = logging.getLogger(__name__)
+configure_logging()
+logger = get_logger(__name__)
 
 
 def parse_args() -> argparse.Namespace:
@@ -52,6 +48,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Re-analyze even if output JSON exists",
     )
+    parser.add_argument(
+        "--use-db",
+        action="store_true",
+        help="Persist results to SQLite database",
+    )
     return parser.parse_args()
 
 
@@ -71,10 +72,11 @@ def main() -> None:
         sys.exit(1)
 
     logger.info(
-        "Analyzing %s calls with %s workers (skip_existing=%s)",
+        "Analyzing %s calls with %s workers (skip_existing=%s, use_db=%s)",
         len(records),
         workers,
         skip_existing,
+        args.use_db,
     )
 
     results = run_parallel_analysis(
@@ -86,6 +88,7 @@ def main() -> None:
         min_chars=min_chars,
         max_retries=max_retries,
         retry_base_delay=retry_delay,
+        use_db=args.use_db,
     )
 
     ok = sum(1 for r in results if r.ok and not r.skipped)

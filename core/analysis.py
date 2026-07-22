@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import yaml
 
-from core.config import AppConfig, load_config
+from core.config import AppConfig, get_llm_model, load_config
 from core.llm import chat_json
 from core.models import CallAnalysis, CallRecord
 
@@ -37,7 +37,7 @@ def analyze_call(
     system_prompt: str | None = None,
     max_retries: int = 3,
     retry_base_delay: float = 1.0,
-) -> CallAnalysis:
+) -> tuple[CallAnalysis, dict]:
     config = config or load_config()
     system_prompt = system_prompt or build_analysis_system_prompt(config)
     user_prompt = (
@@ -47,8 +47,8 @@ def analyze_call(
         f"Staff: {record.staff_name or 'unknown'}\n\n"
         f"Transcript:\n{record.transcript_text}"
     )
-    model = str(config.generic.get("llm_model", "gpt-4o-mini"))
-    payload = chat_json(
+    model = get_llm_model(config)
+    llm_response = chat_json(
         [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
@@ -57,4 +57,10 @@ def analyze_call(
         max_retries=max_retries,
         retry_base_delay=retry_base_delay,
     )
-    return CallAnalysis.model_validate(payload)
+    cost_info = {
+        "model_name": model,
+        "tokens_in": llm_response.tokens_in,
+        "tokens_out": llm_response.tokens_out,
+        "cost_usd": llm_response.cost_usd,
+    }
+    return CallAnalysis.model_validate(llm_response.content), cost_info
