@@ -25,13 +25,13 @@ def run_full_pipeline(
     skip_existing: bool = True,
     use_db: bool = True,
 ) -> tuple[str, str]:
+
+    from core.aggregation import aggregate_week
     from core.batch import run_parallel_analysis
+    from core.emailer import send_report
     from core.ingestion import load_analysis_pair, load_transcripts
     from core.models import CallAnalysis, CallRecord
-    from core.aggregation import aggregate_week
     from core.reporting import generate_report
-    from core.emailer import send_report
-    from concurrent.futures import ThreadPoolExecutor
 
     config = load_config()
 

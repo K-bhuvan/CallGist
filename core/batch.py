@@ -9,8 +9,8 @@ from pathlib import Path
 from core.analysis import analyze_call, build_analysis_system_prompt, low_quality_analysis
 from core.cleaning import apply_cleaning
 from core.config import AppConfig
-from core.models import CallRecord
 from core.logging import get_logger
+from core.models import CallRecord
 from core.pii_redaction import redact, should_redact
 
 logger = get_logger(__name__)
@@ -37,7 +37,7 @@ def _write_payload(out_path: Path, record: CallRecord, analysis) -> None:
 
 def _persist_to_db(record: CallRecord, analysis, cost_info: dict | None = None) -> None:
     try:
-        from core.db_crud import upsert_call_record, upsert_call_analysis
+        from core.db_crud import upsert_call_analysis, upsert_call_record
 
         upsert_call_record(record)
         upsert_call_analysis(record.call_id, analysis, cost_info=cost_info)

@@ -1,14 +1,14 @@
 from __future__ import annotations
 
-import pytest
 from datetime import date
 
-from core.models import CallAnalysis, CallRecord, PainPoint
-from core.cleaning import clean_transcript, apply_cleaning
-from core.rules import is_new_lead, is_lost_lead, is_complaint, is_follow_up, is_revenue_leak
-from core.aggregation import aggregate_week, _severity_rank, _suggested_follow_up_action
-from core.pii_redaction import redact, should_redact
+import pytest
 
+from core.aggregation import _severity_rank, _suggested_follow_up_action, aggregate_week
+from core.cleaning import apply_cleaning, clean_transcript
+from core.models import CallAnalysis, CallRecord, PainPoint
+from core.pii_redaction import redact, should_redact
+from core.rules import is_complaint, is_follow_up, is_lost_lead, is_new_lead, is_revenue_leak
 
 # ---------------------------------------------------------------------------
 # Fixtures

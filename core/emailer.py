@@ -6,7 +6,6 @@ import os
 from python_http_client import exceptions as http_exceptions
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import (
-    Content,
     Email,
     HtmlContent,
     Mail,

@@ -5,7 +5,7 @@ import json
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from core.config import AppConfig, load_config, get_llm_model
+from core.config import AppConfig, get_llm_model, load_config
 from core.llm import chat_json
 from core.models import WeeklyAggregation
 

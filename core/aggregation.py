@@ -5,6 +5,7 @@ from collections import Counter
 from datetime import date
 from typing import Iterable
 
+from core import rules
 from core.config import AppConfig, load_config
 from core.models import (
     CallAnalysis,
@@ -17,7 +18,6 @@ from core.models import (
     RevenueLeakExample,
     WeeklyAggregation,
 )
-from core import rules
 
 
 def _severity_rank(severity: str) -> int:

@@ -13,9 +13,9 @@ sys.path.insert(0, str(ROOT))
 from core.aggregation import aggregate_week
 from core.config import load_config
 from core.ingestion import load_analysis_pair
+from core.logging import configure_logging, get_logger
 from core.models import CallAnalysis, CallRecord
 from core.reporting import generate_report
-from core.logging import configure_logging, get_logger
 
 configure_logging()
 logger = get_logger(__name__)

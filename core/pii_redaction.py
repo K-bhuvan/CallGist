@@ -51,7 +51,4 @@ def redact(text: str) -> tuple[str, dict[str, int]]:
 
 
 def should_redact(text: str) -> bool:
-    for _, pattern, _ in _PATTERNS:
-        if pattern.search(text):
-            return True
-    return False
+    return any(pattern.search(text) for _, pattern, _ in _PATTERNS)
