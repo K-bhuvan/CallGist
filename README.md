@@ -1,5 +1,9 @@
 # CallGist
 
+<p align="center">
+  <img src="public/logo.svg" alt="CallGist" width="96" height="96">
+</p>
+
 **Weekly call intelligence for home-service owners — delivered to their inbox.**
 
 Every Monday, the owner gets one short email: what customers called about, what went wrong, which leads slipped, and **three things to fix this week**. Readable on a phone in under five minutes.
